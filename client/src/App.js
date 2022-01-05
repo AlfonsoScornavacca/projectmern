@@ -1,8 +1,9 @@
+import AppRouter from "./routers/AppRouter";
 
 function App() {
   return (
     <div>
-      <h1>App</h1>
+      <AppRouter />
     </div>
   );
 }
