@@ -1,4 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import roles from '../helpers/Roles';
 import Layout from '../layouts/Layout';
 import AccountPage from '../Pages/AccountPage';
 import UsersPage from '../Pages/Admins/UsersPage';
@@ -21,7 +22,7 @@ export default function AppRouter() {
                     <Route exact path="/account" element={<PrivateRoute><AccountPage /></PrivateRoute>} />
                     <Route exact path="/projects" element={<PrivateRoute><ProjectsPage /></PrivateRoute>} />
                     <Route exact path="/project/:projectId"element={<PrivateRoute><ProjectPage /></PrivateRoute>} />
-                    <Route exact path="/admins/users" element={<PrivateRoute><UsersPage /></PrivateRoute>}/>
+                    <Route hasRole={roles.admin} exact path="/admins/users" element={<PrivateRoute><UsersPage /></PrivateRoute>}/>
 
                     <Route path="*" component={<NotFoundPage />}/>
                 </Routes>
