@@ -4,9 +4,17 @@ import roles from "../helpers/Roles";
 export const AuthContext = createContext();
 
 export default function AuthProvider({children}) {
-    const [user, setuser] = useState({id: 1, role: roles.regular});
+    const [user, setUser] = useState(null);
+    const login = (userCredentials) => setUser ({id: 1, role: roles.regular});
+    const logout = () => setUser (null);
+    const isLogged = () => !!user;
+    const hasRole = (role) => user?.role === role;
     const contextValue = {
-        user
+        user,
+        isLogged,
+        hasRole,
+        login,
+        logout
     }
     return (
 
