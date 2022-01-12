@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import routes from '../helpers/Routes';
 import roles from '../helpers/Roles';
 import Layout from '../layouts/Layout';
@@ -14,7 +14,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 export default function AppRouter() {
     return (
-            <Router>
+            //<Router>
                 <Layout>
                 <Routes>
                     <Route exact path={routes.home} element={<PublicRoute><HomePage /></PublicRoute>} />
@@ -28,6 +28,6 @@ export default function AppRouter() {
                     <Route path="*" component={<NotFoundPage />}/>
                 </Routes>
                 </Layout>
-            </Router>
+            //</Router>
     )
 }

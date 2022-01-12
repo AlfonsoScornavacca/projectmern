@@ -4,10 +4,10 @@ import roles from "../helpers/Roles";
 import routes from "../helpers/Routes";
 
 
-const PrivateRoute = ({hasRole: role, children}) => {
+const PrivateRoute = ({hasRole: role , children}) => {
   const {hasRole, isLogged} = useAuth();
-  if (role &&!hasRole(role)) return <Navigate to={routes.home} />;
-  if (!isLogged()) return <Navigate to={routes.login} />;
+  if (role && hasRole(roles.regular)) return <Navigate to={routes.home} />;
+  if (!isLogged()) return <Navigate to={{pathname:routes.login}} />;
   return children;
 };
 
