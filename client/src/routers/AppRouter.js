@@ -24,8 +24,7 @@ export default function AppRouter() {
                     <Route exact path={routes.projects} element={<PrivateRoute><ProjectsPage /></PrivateRoute>} />
                     <Route exact path={routes.project()}element={<PrivateRoute><ProjectPage /></PrivateRoute>} />
                     <Route hasRole={roles.admin} exact path={routes.admin.users} element={<PrivateRoute><UsersPage /></PrivateRoute>}/>
-
-                    <Route path="*" component={<NotFoundPage />}/>
+                    <Route path="*" element={<NotFoundPage />}/>
                 </Routes>
                 </Layout>
             //</Router>
