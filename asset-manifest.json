@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/projectmern/static/css/main.56e6221f.css",
+    "main.js": "/projectmern/static/js/main.af651133.js",
+    "index.html": "/projectmern/index.html",
+    "main.56e6221f.css.map": "/projectmern/static/css/main.56e6221f.css.map",
+    "main.af651133.js.map": "/projectmern/static/js/main.af651133.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.56e6221f.css",
+    "static/js/main.af651133.js"
+  ]
+}
