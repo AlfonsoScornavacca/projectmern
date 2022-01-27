@@ -1,14 +1,23 @@
+import { useEffect } from "react";
 import { Modal, Form, Alert, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import changePassResolver from "../../validations/changePassResolver";
+
 const ChangePassModal = ({isOpen, close}) => {
-    const {register, handleSubmit, formState: { errors }} = useForm()
+    const {register, handleSubmit, formState: { errors }, reset } = useForm({resolver: changePassResolver})
 
 
     const onSubmit = (formData) => {
 
     }
+
+    useEffect(() => {
+        if(!isOpen) {
+            reset();
+        }
+    }, [isOpen])
     return ( 
-        <Modal show={true} onHide={close}>
+        <Modal show={isOpen} onHide={close}>
             <Modal.Header closeButton>
                 <Modal.Title>
                     Change Password
@@ -18,10 +27,10 @@ const ChangePassModal = ({isOpen, close}) => {
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group>
                         <Form.Label>New Password</Form.Label>
-                        <Form.Control placeholder="Enter new password" {...register('password')}></Form.Control>
+                        <Form.Control type="password" placeholder="Enter new password" {...register('password')}></Form.Control>
                         {errors?.password && (
                         <Form.Text>
-                            <Alert variant='danger'>Invalid Password</Alert>
+                            <Alert variant='danger'>{errors.password.message}</Alert>
                         </Form.Text>
                    )}
                     </Form.Group>

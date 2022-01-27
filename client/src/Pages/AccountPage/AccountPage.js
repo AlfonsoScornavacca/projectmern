@@ -1,17 +1,20 @@
-import { useState } from 'react';
 import {Container, Row, Col, Card, Button} from 'react-bootstrap';
 import useAuth from '../../auth/useAuth';
 import DeleteModal from './DeleteModal';
 import ChangePassModal from './ChangePassModal';
+import useModal from '../../hooks/useModal';
 
 export default function AccountPage() {
-    const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
-    const openDeleteModal = () => { setIsOpenDeleteModal(true)}
-    const closeDeleteModal = () => { setIsOpenDeleteModal(false)}
+    //const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+   // const openDeleteModal = () => { setIsOpenDeleteModal(true)}
+   // const closeDeleteModal = () => { setIsOpenDeleteModal(false)}
 
-    const [isOpenChangePassModal, setIsOpenChangePassModal] = useState(false);
-    const openChangePassModal = () => { setIsOpenChangePassModal(true)}
-    const closeChangePassModal = () => { setIsOpenChangePassModal(false)}
+   // const [isOpenChangePassModal, setIsOpenChangePassModal] = useState(false);
+   // const openChangePassModal = () => { setIsOpenChangePassModal(true)}
+   // const closeChangePassModal = () => { setIsOpenChangePassModal(false)}
+
+    const [isOpenDeleteModal, openDeleteModal, closeDeleteModal] = useModal();
+    const [isOpenChangePassModal, openChangePassModal, closeChangePassModal] = useModal();
 
     const { user } = useAuth();
     return (
