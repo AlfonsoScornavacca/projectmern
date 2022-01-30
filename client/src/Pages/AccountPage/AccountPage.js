@@ -3,6 +3,7 @@ import useAuth from '../../auth/useAuth';
 import DeleteModal from './DeleteModal';
 import ChangePassModal from './ChangePassModal';
 import useModal from '../../hooks/useModal';
+import EditModal from './EditModal';
 
 export default function AccountPage() {
     //const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
@@ -15,6 +16,7 @@ export default function AccountPage() {
 
     const [isOpenDeleteModal, openDeleteModal, closeDeleteModal] = useModal();
     const [isOpenChangePassModal, openChangePassModal, closeChangePassModal] = useModal();
+    const [isOpenEditModal, openEditModal, closeEditModal] = useModal();
 
     const { user } = useAuth();
     return (
@@ -37,7 +39,7 @@ export default function AccountPage() {
                 <Card style={{maxWidth: '360px'}} className= 'mt-3 mx-auto p-4'>
                     <p className= 'text-center'><b>Name: </b>{user.name}</p>
                     <p className= 'text-center'><b>Email: </b>{user.email}</p>
-                    <Button variant='warning'>Edit Account</Button>
+                    <Button variant='warning' onClick={openEditModal}>Edit Account</Button>
                     <Button variant= 'link' className='mt-1' onClick={openChangePassModal}>Change Password</Button>
                     <Button variant='link' className='mt-3 text-danger' onClick={openDeleteModal}>Delete Account</Button>
                 </Card>
@@ -51,6 +53,11 @@ export default function AccountPage() {
         <ChangePassModal 
             isOpen={isOpenChangePassModal}
             close={closeChangePassModal}
+        />
+        <EditModal 
+            isOpen={isOpenEditModal}
+            close={closeEditModal}
+            user={user}
         />
         </>
 

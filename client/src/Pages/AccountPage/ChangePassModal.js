@@ -15,7 +15,7 @@ const ChangePassModal = ({isOpen, close}) => {
         if(!isOpen) {
             reset();
         }
-    }, [isOpen])
+    }, [isOpen, reset])
     return ( 
         <Modal show={isOpen} onHide={close}>
             <Modal.Header closeButton>

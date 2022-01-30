@@ -8,6 +8,13 @@ export default function AuthProvider({children}) {
     const login = (userCredentials, fromLocation) => {
         setUser ({id: 1, name: 'User name', email: 'user@email.com', role: roles.admin}) 
     };
+
+    const updateUser = (data) => {
+        setUser({
+            ...user,
+            ...data
+        })
+    }
     const logout = () => setUser (null);
     const isLogged = () => !!user;
     const hasRole = (role) => user?.role === role;
@@ -16,7 +23,8 @@ export default function AuthProvider({children}) {
         isLogged,
         hasRole,
         login,
-        logout
+        logout,
+        updateUser
     }
     return (
 
